@@ -1,12 +1,17 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import routes from './routes'
+import cors from 'cors'
 
 const app = express()
+const corsOptions = {
+    origin: 'http://localhost:3000'
+}
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-app.use('/api', routes)
+
+app.use('/api',cors(corsOptions), routes)
 
 
 app.get('/', (req, res) =>  res.send('Welcome to FitnessAPI'))
