@@ -61,4 +61,4 @@ typings/
 .next
 
 
-db.sqlite
+*.sqlite

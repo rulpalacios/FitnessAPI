@@ -1,8 +1,9 @@
-process.env.NODE_ENV = 'test'
+// process.env.NODE_ENV = 'test'
 
 import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import app from '../index'
+import faker from 'faker'
 
 chai.use(chaiHttp)
 
@@ -37,11 +38,11 @@ describe('GET /api/exercise/:id', () => {
 describe('POST /api/exercises', () => {
     it('should POST a new exercise', (done) => {
         let exercise = {
-            title: 'Title',
-            description: 'Description',
-            img: 'Image',
-            leftColor: 'LeftColor',
-            rightColor: 'RightColor'
+            title: faker.lorem.word(),
+            description: faker.lorem.text(),
+            img: faker.image.sports(),
+            leftColor: faker.internet.color(),
+            rightColor: faker.internet.color()
         }
         chai.request(app)
             .post('/api/exercises')

@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec mocha --require @babel/register",
-    
-    "start": "nodemon --exec babel-node index"
+    "test": "export NODE_ENV=test&& nodemon --exec mocha --require @babel/register",
+    "start": "export NODE_ENV=development&& nodemon --exec babel-node index"
   },
   "author": "Raul Palacios",
   "license": "ISC",
@@ -24,6 +23,7 @@
     "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "faker": "^4.1.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1"
   }
