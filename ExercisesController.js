@@ -32,13 +32,13 @@ class ExercisesController {
     static details(req, res){
         var sql = "select * from exercise where id = ?"
         
-        db.get(sql, req.params.id, (err, data) => {
+        db.get(sql, req.params.id, (err, exercise) => {
             if (err) {
               res.status(500).json({'error': err.message});
               return;
             }
             res.json({
-                data
+                exercise
             })
         });
     }
