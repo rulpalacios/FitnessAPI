@@ -1,5 +1,5 @@
 'use strict'
-import db from './database'
+import db from '../config/database'
 
 class ExercisesController {
     static index(req, res){
