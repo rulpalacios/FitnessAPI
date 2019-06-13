@@ -14,11 +14,11 @@
     "cors": "^2.8.5",
     "express": "^4.17.0",
     "sqlite3": "^4.0.8",
+    "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
