@@ -1,1 +1,1 @@
-web: export NODE_ENV=production&& --exec babel-node index
+web: babel-node index
