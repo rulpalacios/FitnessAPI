@@ -5,7 +5,7 @@ import cors from 'cors'
 
 const app = express()
 const corsOptions = {
-    origin: 'http://localhost:3000'
+    origin: '*'
 }
 
 app.use(bodyParser.urlencoded({extended: false}))
@@ -15,7 +15,10 @@ app.use('/api',cors(corsOptions), routes)
 
 
 app.get('/', (req, res) =>  res.send('Welcome to FitnessAPI'))
-app.listen(8000, () => console.log('http://localhost:8000'))
+    
+const server = app.listen(8000, () => {
+    console.log(`http://localhost:${server.address().port}`)
+})
 
 
 export default app
