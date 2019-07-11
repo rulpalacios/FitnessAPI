@@ -14,14 +14,16 @@ class ExercisesController {
 	}
 
 	static store(req, res){
-		const { title, description, img, leftColor, rightColor } = req.body
-		const SQL = 'INSERT INTO exercise (title, description, img, leftColor, rightColor) VALUES (?,?,?,?,?)'
-		const params = [title, description, img, leftColor, rightColor]        
-		db.run(SQL, params, function (err) {
+		const { title, description, img, leftColor, rightColor } = req.body;
+		const SQL = 'INSERT INTO exercise (title, description, img, leftColor, rightColor) VALUES (?,?,?,?,?)';
+		const params = [title, description, img, leftColor, rightColor];
+
+		let a = db.run(SQL, params, function (err) {
 			if (err){
 					res.status(500).json({'error': err.message})
 					return;
 			}
+			console.log(this);
 			req.body.id = this.lastID
 			res.json({
 					'exercise': req.body
@@ -53,26 +55,25 @@ class ExercisesController {
 												rightColor = ? 
                   WHERE id = ?`
     const params = [title, description, img, leftColor, rightColor, id]        
-    db.run(SQL, params, function (err, exercise) {
+    db.run(SQL, params, (err) => {
       if (err){
           res.status(500).json({'error': err.message})
           return;
-      }
+			}
       res.json({
-        exercise
+        'exercise': res.req.body
       })
-    })
+		})
   }
 
   static delete(req, res){
-    const SQL = ` DELETE FROM exercise 
-                  WHERE id = ?`
+    const SQL = ` DELETE FROM exercise WHERE id = ?`
 
     db.run(SQL, req.params.id, function (err) {
       if (err){
           res.status(500).json({'error': err.message})
           return;
-      }
+			}
       res.json({
         'msg': 'deleted'
       })
